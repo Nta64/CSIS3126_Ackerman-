@@ -8,6 +8,9 @@ You may need to install the extension Conveyor by Keyoti by going in the search 
 You will then need to set up a free account by clicking access over internet. 
 This will allow up to four hours of use per day on a free account. 
 
+For the songs and albums to work in the sql database you will also need to change the URLS for both to match the adresses when accesing the files in your apache server.
+
+
 You may also need to re-install the nuget packages. 
 Right click on audioapplication under the solution explorer tab and go down to manage nu-get packages. 
 Then search for and install: 
