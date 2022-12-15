@@ -72,23 +72,27 @@ namespace AudioApplication
         //takes user input to add a song to the playlist by sending an http request to the web api
         public async void TapToAdd(object Sender, SelectedItemChangedEventArgs e)
         {
-            var song = (Song)e.SelectedItem;
-            var songId = song.ID;
-            var songTitle = song.Title; 
+            if (e.SelectedItem != null)
+            {
+                var song = (Song)e.SelectedItem;
+                var songId = song.ID;
+                var songTitle = song.Title;
 
-            await SongService.AddSongAsync(songId, PlaylistId);
-            await SongService.GetPlaylistSongTitlesAsync(PlaylistId);
-            await SongService.GetPlaylistSongIds(PlaylistId);
-            
-            PlaylistSongs.Add(new Song { ID = songId, Title = songTitle });
-            AddSongToPlaylistView.IsVisible = false;
-            PlaylistTitle.Text = PlaylistName;
-            CurrentPlaylistView.IsVisible = true;
-            CurrentPlaylistView.ItemsSource = null;
-            CurrentPlaylistView.ItemsSource = PlaylistSongs;
-            AddSongButton.IsVisible = true;
-            RemoveSongButton.IsVisible = true;
-            cancle.IsVisible = false;
+                await SongService.AddSongAsync(songId, PlaylistId);
+                await SongService.GetPlaylistSongTitlesAsync(PlaylistId);
+                await SongService.GetPlaylistSongIds(PlaylistId);
+
+                PlaylistSongs.Add(new Song { ID = songId, Title = songTitle });
+                AddSongToPlaylistView.IsVisible = false;
+                PlaylistTitle.Text = PlaylistName;
+                CurrentPlaylistView.IsVisible = true;
+                CurrentPlaylistView.ItemsSource = null;
+                CurrentPlaylistView.ItemsSource = PlaylistSongs;
+                AddSongButton.IsVisible = true;
+                RemoveSongButton.IsVisible = true;
+                cancle.IsVisible = false;
+            }
+            AddSongToPlaylistView.SelectedItem = null; 
         }
 
         //takes user input to remove a song to the playlist by sending an http request to the web api

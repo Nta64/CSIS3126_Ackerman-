@@ -47,28 +47,32 @@ namespace AudioApplication
         //passes song, album and playlist information to the music player activity and then starts the media player
         public async void TapToPlay(object Sender, SelectedItemChangedEventArgs e)
         {
-            string[] CurrentPlaylistUrls = SongService.SongUrlList;
-            string[] CurrentPlaylistSongTitles = SongService.SongsTitleList;
-            string[] CurrentAlbumImageUrls = SongService.ImageList;
+            if (e.SelectedItem != null)
+            {
+                string[] CurrentPlaylistUrls = SongService.SongUrlList;
+                string[] CurrentPlaylistSongTitles = SongService.SongsTitleList;
+                string[] CurrentAlbumImageUrls = SongService.ImageList;
 
-            var song = (Song)e.SelectedItem;
-            var songId = song.ID;
-         
-            await SongService.GetCurrentSong(songId);
-            string CurrentSongUrl = SongService.CurrentSong;
+                var song = (Song)e.SelectedItem;
+                var songId = song.ID;
 
-            int a = 1;
-            int b = Array.IndexOf(CurrentPlaylistUrls, CurrentSongUrl);
+                await SongService.GetCurrentSong(songId);
+                string CurrentSongUrl = SongService.CurrentSong;
 
-            await SongService.GetCurrentAlbum(songId);
-            string CurrentAlbumImageUrl = SongService.CurrentAlbum;
+                int a = 1;
+                int b = Array.IndexOf(CurrentPlaylistUrls, CurrentSongUrl);
 
-            await SongService.GetArtistsAysnc();
-            string [] CurrentPlaylistArtists = SongService.SongsArtistList;
-            string CurrentArtist = CurrentPlaylistArtists[e.SelectedItemIndex];
+                await SongService.GetCurrentAlbum(songId);
+                string CurrentAlbumImageUrl = SongService.CurrentAlbum;
 
-            await Navigation.PushAsync(new Player(CurrentSongUrl, CurrentAlbumImageUrl, CurrentAlbumImageUrls, CurrentPlaylistSongTitles, CurrentPlaylistUrls, CurrentArtist,CurrentPlaylistArtists, a, b, SongService), true);
-            await CrossMediaManager.Current.Play(CurrentSongUrl);
+                await SongService.GetArtistsAysnc();
+                string[] CurrentPlaylistArtists = SongService.SongsArtistList;
+                string CurrentArtist = CurrentPlaylistArtists[e.SelectedItemIndex];
+
+                await Navigation.PushAsync(new Player(CurrentSongUrl, CurrentAlbumImageUrl, CurrentAlbumImageUrls, CurrentPlaylistSongTitles, CurrentPlaylistUrls, CurrentArtist, CurrentPlaylistArtists, a, b, SongService), true);
+                await CrossMediaManager.Current.Play(CurrentSongUrl);
+            }
+            SongView.SelectedItem = null; 
         }
 
         //filters listview results for searching

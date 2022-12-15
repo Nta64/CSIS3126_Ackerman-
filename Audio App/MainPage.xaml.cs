@@ -54,6 +54,8 @@ namespace AudioApplication
             SU.IsVisible = false;
             register.IsVisible = true;
             cancel.IsVisible = true;
+            password.Text = null;
+            userName.Text = null; 
         }
 
         //takes user input and creates a user by sending an http request to the api 
@@ -84,6 +86,9 @@ namespace AudioApplication
             SU.IsVisible = true;
             register.IsVisible = false;
             cancel.IsVisible = false;
+            password.Text = null;
+            userName.Text = null;
         }
     }
+    
 }

@@ -72,9 +72,9 @@ namespace AudioApplication
         //takes user input for the playlist name and sends an http request to the web api to delete a playlist
         public async void DeletePlaylist(object sender, SelectedItemChangedEventArgs e)
         {        
-            var playlist = (Song)e.SelectedItem;
+            var playlist = (Playlist)e.SelectedItem;
             int playlistId = playlist.ID;
-            string playlistName = playlist.Title;         
+            string playlistName = playlist.Name;         
 
             if (!string.IsNullOrWhiteSpace(playlistName))
             {

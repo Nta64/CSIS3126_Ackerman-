@@ -8,6 +8,8 @@
 
         <Label x:Name="MainLogo" Text="Audio" FontSize ="32" HorizontalTextAlignment="Center" Padding="25"/>
 
+        <Image Source="http://localhost:8888/LogoImage.jpg"></Image>
+
         <Label Padding="20"></Label>
         
         <Label  Text="Username" FontSize ="18"/>
