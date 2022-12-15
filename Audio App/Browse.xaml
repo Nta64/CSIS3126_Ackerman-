@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioApplication.Browse">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar 
+                Placeholder=""
+                CancelButtonColor="Red"
+                PlaceholderColor="White"
+                TextColor="White"
+                TextTransform="Lowercase"
+                HorizontalTextAlignment="Center"
+                FontSize="Large"
+                FontAttributes="Italic" 
+                TextChanged="SearchChanged"
+            />
+            <!-- Listview bound to an observable collection of all songs -->
+            <ListView x:Name="SongView"  ItemSelected="TapToPlay" ItemsSource="{Binding Songs}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Title}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

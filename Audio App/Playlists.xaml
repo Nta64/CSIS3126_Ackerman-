@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioApplication.Playlists">
+
+            <NavigationPage.TitleView>
+                <Label x:Name="PVTitle" FontSize="24" TextColor="White" FontAttributes="Bold"  />
+            </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout x:Name="Playlist">
+            <!-- list view bound to an obersvable collection of playlist titles -->
+            <ListView x:Name="PlaylistView" ItemSelected="TapTo" ItemsSource="{Binding PlaylistTitles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- list view bound to an obersvable collection of playlist titles for deleting songs -->
+            <ListView x:Name="DeleteView" ItemSelected="DeletePlaylist" IsVisible="false" ItemsSource="{Binding PlaylistTitles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Orientation="Horizontal" Spacing="240">
+                <!-- button for the removal of a playlist -->
+                <Button x:Name= "delete"
+                    FontSize="30"
+                    Text="-"
+                    CornerRadius="28"
+                    WidthRequest="60"
+                    HeightRequest="60"        
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    Visual="Material" 
+                    Clicked="DeleteButton"
+                />
+                <!-- button for the creation of a playlist -->
+                <Button x:Name= "create"
+                    FontSize="30"
+                    Text="+"
+                    CornerRadius="28"
+                    WidthRequest="60"
+                    HeightRequest="60"        
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Visual="Material" 
+                    Clicked="CreatePlaylist"
+                />
+            </StackLayout>
+                <!-- button for canceling the removal of a playlist -->
+                <Button x:Name= "cancle"
+                    FontSize="15"
+                    Text="cancle"
+                    CornerRadius="28"
+                    WidthRequest="120"
+                    HeightRequest="60"        
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Visual="Material" 
+                    Clicked="Back"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

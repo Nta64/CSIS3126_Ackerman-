@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioApplication.PlaylistView">
+    
+    
+    <NavigationPage.TitleView>
+        <Label x:Name="PlaylistTitle" FontSize="24" TextColor="White" FontAttributes="Bold"  />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <Label/>
+
+            <SearchBar x:Name="SongSearch"
+           Placeholder=""
+           CancelButtonColor="Red"
+           PlaceholderColor="White"
+           TextColor="White"
+           TextTransform="Lowercase"
+           HorizontalTextAlignment="Center"
+           FontSize="Large"
+           FontAttributes="Italic" 
+           TextChanged="SearchChanged"
+           IsVisible="true"
+            />
+            
+            <!-- Listview bound to an observable collection of the current playlist songs -->
+            <ListView x:Name="CurrentPlaylistView" ItemSelected="TapToPlay" HeightRequest="100000000">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Listview bound to an observable collection of current playlist songs, for choosing a song to add-->
+            <ListView x:Name="AddSongToPlaylistView" ItemSelected ="TapToAdd" ItemsSource="{Binding PlaylistSongs}" HeightRequest="10000000" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <!-- Listview bound to an observable collection of current playlist songs, for choosing a song to delete-->
+            <ListView x:Name="RemoveSongFromPlaylistView" ItemSelected="TapToRemove" ItemsSource="{Binding PlaylistSongs}" HeightRequest="100000" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Title}" FontSize="Medium"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal" Spacing="240">
+
+                <!-- button for removing songs -->
+                <Button x:Name= "RemoveSongButton"
+                    FontSize="30"
+                    Text="-"
+                    CornerRadius="28"
+                    WidthRequest="60"
+                    HeightRequest="60"        
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Visual="Material" 
+                    Clicked="RemoveSong"
+                />
+
+                <!-- button for adding songs -->
+                <Button x:Name= "AddSongButton"
+                    FontSize="30"
+                    Text="+"
+                    CornerRadius="28"
+                    WidthRequest="60"
+                    HeightRequest="60"        
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Visual="Material" 
+                    Clicked="AddSong"
+                />
+            </StackLayout>
+            
+            <!-- button for removing songs -->
+            <Button x:Name= "cancle"
+                    FontSize="15"
+                    Text="cancle"
+                    CornerRadius="28"
+                    WidthRequest="120"
+                    HeightRequest="60"        
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Visual="Material" 
+                    Clicked="Back"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

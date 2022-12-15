@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioApplication.FAQ">
+    <ContentPage.Content>
+        <StackLayout >
+
+            <Label Text="Welcome to the audio FAQ"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Medium"/>
+
+            <Label></Label>
+            
+            <ScrollView>
+
+                <Label Text="QUESTION: What do I do if I cant remember my password or if there is an issue with logging in  &#10;  &#10; ANSWER: Account management is taken care of by the application admin. You can contact them at 222-222-2222 &#10;  &#10; &#10;  &#10; QUESTION: How do I play a song &#10;  &#10; ANSWER: Click on the song name in the middle of the page, this works for both browse and your paylists &#10;  &#10; &#10;  &#10; QUESTION: How do I remove a song from a playlist &#10;  &#10; ANSWER: Click the + button and from there choose the song you wish to add &#10;  &#10; &#10;  &#10; QUESTION: How do I remove a song to a playlist &#10;  &#10; ANSWER: Click the - button and from there choose the song you wish to remove &#10;  &#10; &#10;  &#10; QUESTION: How to i back out of an add or remove song page &#10;  &#10; ANSWER: Click the cancel button &#10;  &#10; &#10;  &#10; QUESTION: What do the buttons mean on the music player &#10;  &#10; ANSWER: The R button is for rewind, the P button is for play/pause, and the F button is for forward &#10;  &#10; &#10;  &#10; QUESTION: How do I logout &#10;  &#10; ANSWER: Click the logout button on the home page"  
+               />
+
+            </ScrollView>
+
+           
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

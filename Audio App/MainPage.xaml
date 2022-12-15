@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioApplication.MainPage">
+
+    <!-- Log in page, empty lables are being used for detailed spacing -->
+    <StackLayout Spacing="10">
+
+        <Label x:Name="MainLogo" Text="Audio" FontSize ="32" HorizontalTextAlignment="Center" Padding="25"/>
+
+        <Label Padding="20"></Label>
+        
+        <Label  Text="Username" FontSize ="18"/>
+        <Entry x:Name ="userName" />
+        
+        <Label Padding="20"></Label>
+        
+        <Label  Text=" Password" FontSize ="18" />
+        <Entry x:Name="password" IsPassword ="True" />
+
+        <Label Padding="25"></Label>
+
+        <Button x:Name="register" Text="Register" Clicked="HandleRegisterAttempt" IsVisible="False"/>
+        <Button x:Name="login" Text="Login" Clicked="HandleLoginAttempt" />
+        <Button x:Name="cancel" Text="Cancel" Clicked="ResetPage" IsVisible="False"/>
+
+        <Label x:Name="SU" Text="Sign Up" FontSize ="14" HorizontalTextAlignment="Center" Padding="20">
+            
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="RegisterUser"/>
+            </Label.GestureRecognizers>
+            
+        </Label>
+
+    </StackLayout>
+
+</ContentPage>
